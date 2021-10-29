@@ -10,7 +10,7 @@ import { ImageFormComponent } from './image/image-form/image-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SaveComponent } from './save/save.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon'; 
@@ -36,6 +36,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatButtonModule, 
     MatDividerModule,

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CodeService } from '../service/code.service';
+
 
 @Component({
   selector: 'app-text',
@@ -8,13 +10,21 @@ import { CodeService } from '../service/code.service';
 })
 export class TextComponent implements OnInit {
 
+  textForm: FormGroup
   @Input() textOutput: string;
   @Output() textInput: EventEmitter<string> = new EventEmitter()
 
   value = ""
   @Input() exists;
 
-  constructor(private codeService: CodeService) { }
+  constructor(private codeService: CodeService, private formbuilder: FormBuilder) {
+    this.textForm = this.formbuilder.group({
+      inputText: new FormControl('', [
+        Validators.required,
+        //allow only ascii characters
+        Validators.pattern("[\x00-\x7F]+")])
+    })
+   }
 
   ngOnInit() {
   }
@@ -25,9 +35,11 @@ export class TextComponent implements OnInit {
   async sendText() {
     var space = await this.codeService.getAvailableSpace()
     this.maxSpace = parseInt(space.toString())
+    if (this.textForm.valid) {
     var text = document.getElementsByTagName("textarea")[0].value || "";
     this.space = parseInt(space.toString())-text.length
-    this.textInput.emit(text);
+    this.textInput.emit(text)
+    };
   }
 
   async clear() {
