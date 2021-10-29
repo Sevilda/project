@@ -1,0 +1,16 @@
+<div class="col-md-12 d-flex justify-content-center">
+    
+<app-image-form (imageChosen)="display($event)"></app-image-form>
+
+</div>
+
+<div class="col-md-12 d-flex justify-content-center">
+    <h4 *ngIf = "url" > Your chosen image: </h4>
+</div>
+
+<div class="col-md-12 d-flex justify-content-center">
+    <img *ngIf = "url" [src]="url">
+</div>
+
+
+
