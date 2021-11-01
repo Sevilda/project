@@ -9,7 +9,6 @@ export class ImageComponent implements OnInit {
 
   image: File;
   url;
-  progress;
   @Output() displayOldValues: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() exists: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -30,17 +29,10 @@ export class ImageComponent implements OnInit {
   //read the file and set URL to display the image
   imageToUrl() {
 
-      var progress = document.querySelector('.percent');
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.url = event.target.result;
       }
-
-      // reader.onprogress = function(data) {
-      //   if (data.lengthComputable) {                                            
-      //       var prog = Math.round((data.loaded / data.total) * 100);
-      //       console.log(prog);
-      //   } }
       reader.readAsDataURL(this.image);
     }
   }

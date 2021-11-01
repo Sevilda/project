@@ -15,7 +15,7 @@ export class TextComponent implements OnInit {
   @Output() textInput: EventEmitter<string> = new EventEmitter()
 
   value = ""
-  @Input() exists;
+  @Input() exists:boolean;
 
   constructor(private codeService: CodeService, private formbuilder: FormBuilder) {
     this.textForm = this.formbuilder.group({
@@ -29,8 +29,8 @@ export class TextComponent implements OnInit {
   ngOnInit() {
   }
 
-  space;
-  maxSpace;
+  space:number;
+  maxSpace:number;
 
   async sendText() {
     var space = await this.codeService.getAvailableSpace()

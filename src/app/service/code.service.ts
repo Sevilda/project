@@ -7,13 +7,13 @@ export class CodeService {
 
   constructor() { }
 
-  file: File = null;
-  valid = false;
+  file: File;
+  valid : boolean = false;
 
   async encode(text: string) {
     //create a view to work with the existing data and a file that will be our output
     var view = await this.readFile();
-    var viewLen = await this.fileLen();
+    var viewLen = await this.getfileLen();
     var newFile = new Array();
     for (let i = 0; i < 6; i++) {
       newFile[i] = view[i];
@@ -57,7 +57,7 @@ export class CodeService {
 
 
 
-  async decode() {
+  async decode(): Promise<string> {
     var bytearray = "";
     var view = await this.readFile();
     //read text length from header[6-9]
@@ -85,7 +85,7 @@ export class CodeService {
     this.valid = true;
   }
 
-  async getAvailableSpace() {
+  async getAvailableSpace(): Promise<number> {
     var view = await this.readFile();
     var height = parseInt(view[18]) + 256 * parseInt(view[19] + 16 * 256 * parseInt(view[20]) + 256 * 256 * parseInt(view[21]))
     var width = parseInt(view[22]) + 256 * parseInt(view[23] + 16 * 256 * parseInt(view[24]) + 256 * 256 * parseInt(view[25]))
@@ -113,7 +113,7 @@ export class CodeService {
     })
   }
 
-  async fileLen() {
+  async getfileLen(): Promise<number>{
     var reader = new FileReader();
     return new Promise((resolve, reject) => {
       reader.onerror = () => {

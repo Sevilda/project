@@ -13,12 +13,11 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  text;
   error: string = ""
   @Output() blob: EventEmitter<any> = new EventEmitter();
   @Output() textOutput: EventEmitter<string> = new EventEmitter();
+  @Output() displayOldValues:  EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() textInput: string ="";
-  @Output() displayOldValues:  EventEmitter<boolean> = new EventEmitter<boolean>();;
 
 
   async encode() {
