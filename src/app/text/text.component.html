@@ -13,7 +13,7 @@
     <div class="col-md-6 d-flex justify-content-center">
         <form [formGroup]="textForm">
         <mat-form-field appearance="fill" style="width:30vw">
-            <textarea matInput [matTextareaAutosize]="true" [disabled]="!exists" type="text" 
+            <textarea matInput [matTextareaAutosize]="true" type="text" 
             [(ngModel)] = "value" [maxLength]="maxSpace || 100" id="textAreaIn" (input)="sendText()"
             pattern="[\x00-\x7F]+" formControlName="inputText"
             > </textarea>

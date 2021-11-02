@@ -15,7 +15,7 @@ export class TextComponent implements OnInit {
   @Output() textInput: EventEmitter<string> = new EventEmitter()
 
   value = ""
-  @Input() exists:boolean;
+  @Input() exists:boolean = false;
 
   constructor(private codeService: CodeService, private formbuilder: FormBuilder) {
     this.textForm = this.formbuilder.group({
@@ -24,7 +24,16 @@ export class TextComponent implements OnInit {
         //allow only ascii characters
         Validators.pattern("[\x00-\x7F]+")])
     })
+
+    this.textForm.disable();
    }
+
+   ngOnChanges(changes) {
+    if (changes.exists.currentValue==true)
+    {
+      this.textForm.enable()
+    };
+  }
 
   ngOnInit() {
   }

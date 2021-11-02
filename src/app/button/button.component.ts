@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CodeService } from '../service/code.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class ButtonComponent implements OnInit {
     }
     else if (this.codeService.valid && !this.textInput) {
       this.displayOldValues.emit(false)
-      this.error = "No input text found!"
+      this.error = "No, or invalid input text found!"
     }
     else {
       this.displayOldValues.emit(false)
@@ -50,7 +50,7 @@ export class ButtonComponent implements OnInit {
       this.error = ""
       }
       else {
-        this.error="No coded text found!"
+        this.error="No encoded text found!"
       }
     }
     else {
