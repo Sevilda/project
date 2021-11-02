@@ -1,11 +1,11 @@
-<div class="col-md-12 d-flex justify-content-center" *ngIf="displayOldValues">
+<div class="col-md-12 d-flex justify-content-center">
     <img *ngIf="blob" [src]="sanitize('data:image/bmp;base64, ' + _arrayBufferToBase64(blob))">
 </div>
 
-<div class="col-md-12 d-flex justify-content-center" *ngIf="displayOldValues">
-    <h4>Your resulting image </h4>
+<div class="col-md-12 d-flex justify-content-center">
+    <span>Your resulting image </span>
 </div>
 
-<div class="col-md-12 d-flex justify-content-center" *ngIf="displayOldValues">
-    <button mat-raised-button color="accent" *ngIf="blob" (click)="downloadFile()">Save</button>
+<div class="col-md-12 d-flex justify-content-center">
+    <button mat-button color="primary" *ngIf="blob" (click)="downloadFile()">Save</button>
 </div>

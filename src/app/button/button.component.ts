@@ -16,22 +16,22 @@ export class ButtonComponent implements OnInit {
   error: string = ""
   @Output() blob: EventEmitter<any> = new EventEmitter();
   @Output() textOutput: EventEmitter<string> = new EventEmitter();
-  @Output() displayOldValues:  EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() textInput: string ="";
+  @Output() displayOldValues: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() textInput: string = "";
 
 
   async encode() {
     console.log(this.textInput + ",  " + this.codeService.valid)
     if (this.codeService.valid && this.textInput) {
-    this.blob.emit(await this.codeService.encode(this.textInput))
-    this.displayOldValues.emit(true)
-    this.error = ""
+      this.blob.emit(await this.codeService.encode(this.textInput))
+      this.displayOldValues.emit(true)
+      this.error = ""
     }
-    else if (!this.codeService.valid && this.textInput){
+    else if (!this.codeService.valid && this.textInput) {
       this.displayOldValues.emit(false)
       this.error = "No file found!"
     }
-    else if (this.codeService.valid && !this.textInput){
+    else if (this.codeService.valid && !this.textInput) {
       this.displayOldValues.emit(false)
       this.error = "No input text found!"
     }
@@ -44,8 +44,14 @@ export class ButtonComponent implements OnInit {
   async decode() {
     this.displayOldValues.emit(false)
     if (this.codeService.valid) {
-    this.textOutput.emit(await this.codeService.decode());
-    this.error = ""
+      var text= await this.codeService.decode();
+      if (text) {
+      this.textOutput.emit(text);
+      this.error = ""
+      }
+      else {
+        this.error="No coded text found!"
+      }
     }
     else {
       this.error = "No file found!"

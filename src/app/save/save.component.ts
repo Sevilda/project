@@ -8,7 +8,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SaveComponent implements OnInit {
 
-  @Input() displayOldValues: boolean;
   @Input() blob: any;
 
   constructor(private sanitizer: DomSanitizer) { }

@@ -9,19 +9,13 @@ img {
     margin-top: 10px;
 }
 
-textarea{
-    resize: vertical;
-    border-radius:10px;
-    border:6px solid #556677;
-}
-
-.focus{
-    box-shadow: 3px;
-}
 
 div {
-    margin: 2px;
+    background-color: #DDDAE7;
+    margin: 5px;
     padding: 5px;
+    font-size: large;
+    border-radius: 20px;
 }
 
 button {
@@ -29,11 +23,13 @@ button {
 }
 
 :disabled {
-    background-color: lightblue;
+    color: lightcyan;
 }
+
 html {
-    background-color: #FFFFFF;
-    margin: 5px;
+    padding: 20px;
+    background-color: #DABFED;
 }
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 10px ; font-family: Roboto, "Helvetica Neue", sans-serif; }

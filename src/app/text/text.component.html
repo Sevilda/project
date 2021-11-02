@@ -12,10 +12,11 @@
 <div class="col-md-12 d-flex justify-content-center">
     <div class="col-md-6 d-flex justify-content-center">
         <form [formGroup]="textForm">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" style="width:30vw">
             <textarea matInput [matTextareaAutosize]="true" [disabled]="!exists" type="text" 
             [(ngModel)] = "value" [maxLength]="maxSpace || 100" id="textAreaIn" (input)="sendText()"
-            pattern="[\x00-\x7F]+" formControlName="inputText"> </textarea>
+            pattern="[\x00-\x7F]+" formControlName="inputText"
+            > </textarea>
             <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
               <mat-icon>close</mat-icon>
             </button>
@@ -31,8 +32,8 @@
   
 <div class="col-md-6 d-flex justify-content-center">
 
-    <mat-form-field appearance="fill">
-        <textarea matInput [matTextareaAutosize]="true" disabled="true" type="text" [(ngModel)] = "textOutput" [maxLength]="maxSpace || 100" id="textAreaOut"></textarea>
+    <mat-form-field appearance="fill" style="width:30vw">
+        <textarea matInput [matTextareaAutosize]="true" disabled="true" type="text" [(ngModel)] = "textOutput" id="textAreaOut"></textarea>
     </mat-form-field>
 
     </div>
