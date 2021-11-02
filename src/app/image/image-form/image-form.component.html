@@ -1,15 +1,46 @@
-<div class="row mt-2 d-flex justify-content-center">
-    <div class="col-md-12">
+<div class="col-md-12 d-flex justify-content-center">
+    <div class="col-md-6 mt-2 d-flex justify-content-center">
+        <span> To Encode: </span>
+        <ul>
+            <li>
+                Upload an image
+            </li>
+            <li>
+                Type the text you want encoded
+            </li>
+            <li>
+                Click on Encode
+            </li>
+            <li>
+                Download the resulting image
+            </li>
+        </ul>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col-md-6 mt-2 d-flex justify-content-center">
+        <span> To Decode: </span>
+        <ul>
+            <li>
+                Upload an image
+            </li>
+            <li>
+                Click on Decode
+            </li>
+            <li>
+                The decoded text will appear in the respective textfield.
+            </li>
+        </ul>
+    </div>
+    </div>
+<div class="col-md-12 d-flex justify-content-center">
+    <div class="col-md-12 mt-2 d-flex justify-content-center">
 
 
         <div class="text-danger" *ngIf="error"> {{ error }}</div>
-        
+
         <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
-        <input hidden (change)="imageUploaded($event)" #fileInput type="file" >
+        <input hidden (change)="imageUploaded($event)" #fileInput type="file">
 
     </div>
- <div class="row mt-2 d-flex justify-content-center">
-
-</div>
 
 </div>

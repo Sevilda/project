@@ -1,5 +1,5 @@
 
-<div class="col-md-12 d-flex justify-content-center"> <a class="text-danger">{{error}}</a></div>
+<div *ngIf = "error" class="col-md-12 d-flex justify-content-center"> <a class="text-danger">{{error}}</a></div>
 <div class="col-md-12 d-flex justify-content-center">
     <div>
     <button mat-raised-button color="primary" (click)="encode()"> Encode </button>
