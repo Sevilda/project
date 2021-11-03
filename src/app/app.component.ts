@@ -12,7 +12,6 @@ export class AppComponent {
   textInput:string;
   displayOldValues: boolean;
   blob:any;
-  exists:boolean;
-
+  exists:number;
 
 }

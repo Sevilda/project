@@ -21,7 +21,7 @@ export class ButtonComponent implements OnInit {
 
 
   async encode() {
-    console.log(this.textInput + ",  " + this.codeService.valid)
+    //    console.log(this.textInput + ",  " + this.codeService.valid)
     if (this.codeService.valid && this.textInput) {
       this.blob.emit(await this.codeService.encode(this.textInput))
       this.displayOldValues.emit(true)
@@ -44,13 +44,13 @@ export class ButtonComponent implements OnInit {
   async decode() {
     this.displayOldValues.emit(false)
     if (this.codeService.valid) {
-      var text= await this.codeService.decode();
+      var text = await this.codeService.decode();
       if (text) {
-      this.textOutput.emit(text);
-      this.error = ""
+        this.textOutput.emit(text);
+        this.error = ""
       }
       else {
-        this.error="No encoded text found!"
+        this.error = "No encoded text found!"
       }
     }
     else {

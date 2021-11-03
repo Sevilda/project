@@ -30,6 +30,7 @@ export class ImageFormComponent implements OnInit {
     }
     else {
       this.error = "The uploaded file is not an image of BMP format, please try again.";
+      this.imageChosen.emit(null)
     }
     
   }

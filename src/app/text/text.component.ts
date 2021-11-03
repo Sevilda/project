@@ -15,7 +15,8 @@ export class TextComponent implements OnInit {
   @Output() textInput: EventEmitter<string> = new EventEmitter()
 
   value = ""
-  @Input() exists:boolean = false;
+  @Input() exists: number = 0;
+  //0 if not exists, otherwise counting only to observe the change,
 
   constructor(private codeService: CodeService, private formbuilder: FormBuilder) {
     this.textForm = this.formbuilder.group({
@@ -26,28 +27,36 @@ export class TextComponent implements OnInit {
     })
 
     this.textForm.disable();
-   }
+  }
 
-   ngOnChanges(changes) {
-    if (changes.exists.currentValue==true)
-    {
+  async ngOnChanges(changes) {
+    console.log(changes)
+    if (changes.exists.currentValue == 0 || changes.exists.firstChange == true) {
+      this.textForm.disable()
+      await this.clear()
+    }
+    else if (changes.exists.currentValue > 0){
       this.textForm.enable()
-    };
+      await this.clear()
+    }
   }
 
   ngOnInit() {
   }
 
-  space:number;
-  maxSpace:number;
+  space: number;
+  maxSpace: number;
 
   async sendText() {
     var space = await this.codeService.getAvailableSpace()
     this.maxSpace = parseInt(space.toString())
     if (this.textForm.valid) {
-    var text = document.getElementsByTagName("textarea")[0].value || "";
-    this.space = parseInt(space.toString())-text.length
-    this.textInput.emit(text)
+      var text = document.getElementsByTagName("textarea")[0].value || "";
+      this.space = parseInt(space.toString()) - text.length
+      this.textInput.emit(text)
+    }
+    else {
+      this.textInput.emit("")
     };
   }
 

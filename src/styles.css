@@ -13,9 +13,9 @@ img {
 div {
     background-color:rgba(221,218,231,0.9);
     margin: 5px;
-    padding: 5px;
+    padding: 3px;
     font-size: large;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 button {
