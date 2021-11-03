@@ -1,27 +1,27 @@
-# Project
+# Data transmission through public channels using steganography - Thesis project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+## How to install
 
-## Development server
+### The installation requires npm and NodeJS
+If you don't have them, download them from nodejs.org
+If you are unsure whether you have them installed, you can check with the following commands: 
+- node -v
+- npm -v
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Running the application requires Angular CLI
+If you are unsure whether you have it installed, you can check with the following command: 
+- ng -v
 
-## Code scaffolding
+To install the Angular CLI you need to use the following command: 
+- npm install @angular/cli
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Once you have the Angular CLI, navigate to the project's local location and run 
+- ng build
 
-## Build
+### Once it finishes building, you may run the application with either:
+- ng serve
+- ng serve -open
+Where the second option opens your browser on the URL of the application.
+Otherwise navigate to localhost:4200
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
