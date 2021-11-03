@@ -1,5 +1,40 @@
 <html> 
   <div class="container-fluid col-md-12 justify-content-center">
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="col-md-6 mt-2 d-flex justify-content-center">
+          <span> To Encode: </span>
+          <ul>
+              <li>
+                  Upload an image
+              </li>
+              <li>
+                  Type the text you want encoded
+              </li>
+              <li>
+                  Click on Encode
+              </li>
+              <li>
+                  Download the resulting image
+              </li>
+          </ul>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="col-md-6 mt-2 d-flex justify-content-center">
+          <span> To Decode: </span>
+          <ul>
+              <li>
+                  Upload an image
+              </li>
+              <li>
+                  Click on Decode
+              </li>
+              <li>
+                  The decoded text will appear in the respective textfield.
+              </li>
+          </ul>
+      </div>
+      </div>
+      
 
   <app-image (displayOldValues)="displayOldValues= $event" (exists)="exists= $event" ></app-image>
 
