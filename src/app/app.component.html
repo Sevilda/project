@@ -1,5 +1,10 @@
 <html> 
+  <div class="col-md-12 d-flex justify-content-center">
+    <h1> Data transmission through public channels using steganography </h1>
+  </div>
   <div class="container-fluid col-md-12 justify-content-center">
+
+
     <div class="col-md-12 d-flex justify-content-center">
       <div class="col-md-6 mt-2 d-flex justify-content-center">
           <span> To Encode: </span>
@@ -34,7 +39,7 @@
           </ul>
       </div>
       </div>
-      
+
 
   <app-image (displayOldValues)="displayOldValues= $event" (exists)="exists= $event" ></app-image>
 
@@ -45,6 +50,11 @@
   <app-button (textOutput)="textOutput = $event" (blob)="blob = $event" [textInput]="textInput" (displayOldValues)="displayOldValues= $event"></app-button>
 
   <app-save *ngIf="displayOldValues" [blob] = "blob"></app-save>
-
+  <div class="col-md-12">
+    <h4 style="text-align: right;"> Coded and built by Enikő Vadon </h4>
+  
+  </div>
 </div>
+
+
 </html>
