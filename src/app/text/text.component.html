@@ -15,7 +15,7 @@
         <mat-form-field appearance="fill" style="width:30vw">
             <textarea matInput [matTextareaAutosize]="true" type="text" 
             [(ngModel)] = "value" [maxLength]="maxSpace || 100" id="textAreaIn" (input)="sendText()"
-            pattern="[\x00-\x7F]+" formControlName="inputText"
+            pattern="[\x00-\x7F]+" formControlName="inputText" 
             > </textarea>
             <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
               <mat-icon>close</mat-icon>
@@ -33,7 +33,7 @@
 <div class="col-md-6 d-flex justify-content-center">
 
     <mat-form-field appearance="fill" style="width:30vw">
-        <textarea matInput [matTextareaAutosize]="true" disabled="true" type="text" [(ngModel)] = "textOutput" id="textAreaOut"></textarea>
+        <textarea matInput [matTextareaAutosize]="true" readonly="true" type="text" [(ngModel)] = "textOutput" id="textAreaOut"></textarea>
     </mat-form-field>
 
     </div>

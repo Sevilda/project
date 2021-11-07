@@ -36,6 +36,8 @@ export class CodeService {
       }
       binaryString += text.charCodeAt(i).toString(2)
     }
+
+    console.log(binaryString);
     //find where the data starts (10-13 byte) 
     var dataStartIndex = parseInt(view[10]) + 256 * parseInt(view[11] + 16 * 256 * parseInt(view[12]) * parseInt(view[13]))
     for (let i = 10; i < dataStartIndex; i++) {
@@ -43,15 +45,22 @@ export class CodeService {
     }
     //substitute every last 2 bit with the first two digits of the bytearray
     for (let i = dataStartIndex; i < dataStartIndex + text.length * 4; i++) {
-      newFile[i] = parseInt(view[i].toString(2).slice(0, -2).concat(binaryString.substr(0, 2)), 2)
+      //has trouble with handling values less than 3 bits
+      if (view[i]>3)
+        newFile[i] = parseInt(view[i].toString(2).slice(0, -2).concat(binaryString.substr(0, 2)), 2)
+      else 
+        newFile[i] = binaryString.substr(0, 2)
       binaryString = binaryString.substr(2, binaryString.length)
-    }
+      console.log(i)
+        }
+
+
     //finish copying the rest of the file
     for (let i = dataStartIndex + text.length * 4; i < viewLen; i++) {
+      console.log(i)
       newFile[i] = view[i]
     }
     //return new file
-    //console.log(newFile)
     return newFile;
   }
 
@@ -69,15 +78,25 @@ export class CodeService {
     var dataStartIndex = parseInt(view[10]) + 256 * parseInt(view[11] + 16 * 256 * parseInt(view[12]) + 256 * 256 * parseInt(view[13]))
     //for length*4, read every last 2 bytes into bytearray
     for (let i = dataStartIndex; i < dataStartIndex + len * 4; i++) {
-      bytearray = bytearray.concat(view[i].toString(2).slice(-2));
+      //values stored on 1 bit are the death of this
+      if (view[i]>2)
+        bytearray = bytearray.concat(view[i].toString(2).slice(-2));  
+      else {
+        bytearray += "0" + view[i].toString(2)
+      }
+
+    
     }
     //reset the value of the text variable
     var text = ""
     //convert the bytearray into text
+    console.log(bytearray)
     while (bytearray) {
       text += String.fromCharCode(parseInt(bytearray.substr(0, 8), 2))
       bytearray = bytearray.substr(8, bytearray.length);
     }
+
+    
     return text;
   }
 
