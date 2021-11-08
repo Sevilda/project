@@ -62,6 +62,7 @@ export class TextComponent implements OnInit {
 
   async clear() {
     document.getElementsByTagName("textarea")[0].value = ""
+    document.getElementsByTagName("textarea")[1].value = ""
     await this.sendText()
   }
 
